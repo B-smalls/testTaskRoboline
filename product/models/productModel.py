@@ -4,15 +4,21 @@ from django.db import models
 
 class Product(models.Model):
     # атрибут "Name" - название товара.
-    name = models.CharField()
+    name = models.CharField("Name", db_column="Name")
 
     # атрибут "Description" - описание товара.
-    description = models.TextField()
+    description = models.TextField("Description", db_column="Description")
 
     # атрибут "Price" - цена товара.
-    price = models.DecimalField()
+    price = models.DecimalField("Price", db_column="Price", max_digits=19, decimal_places=2)
 
     #атрибут "СategoryID" - идентификатор категории, к которой относится товар.
     categoryID = models.ForeignKey(
-        'product.ProductCategory', models.CASCADE
+        'product.ProductCategory', 
+        models.CASCADE, 
+        verbose_name="CategoryID",
+        db_column="CategoryID"
     )
+
+    class Meta:
+        db_table = "Product"
