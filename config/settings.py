@@ -33,7 +33,6 @@ INSTALLED_APPS = [
 
 # Installed package
 INSTALLED_APPS+= [
-    'drf_spectacular',
     'rest_framework',
     'corsheaders',
     'djoser',
@@ -43,6 +42,10 @@ INSTALLED_APPS+= [
 INSTALLED_APPS += [
     'api',
     'product',
+]
+# documantion
+INSTALLED_APPS += [
+    'drf_spectacular',
 ]
 
 MIDDLEWARE = [
@@ -99,11 +102,11 @@ DATABASES = {
 ########################
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES':(
-        'rest_framework.permissions.IsAuthenticated',),
+        'rest_framework.permissions.AllowAny',),
 
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.BasicAuthentication',
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        #'rest_framework.authentication.BasicAuthentication',
+        #'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
 
     'DEFAULT_PARSER_CLASSES': [
@@ -170,16 +173,16 @@ CSRF_COOKIE_SECURE = False
 # DRF SPECTACULAR
 #########################
 SPECTACULAR_SETTINGS = {
-    'TITLE': 'Med Centr',
-        'DESCRIPTION': 'Your project description',
+    'TITLE': 'Product',
+        'DESCRIPTION': 'Тестовое задание',
     'VERSION': '1.0.0',
 
     'SERVE_PERMISSIONS': [
-        'rest_framework.permissions.IsAuthenticated'
+        'rest_framework.permissions.AllowAny'
     ],
 
     'SERVE_AUTHENTICATION': [
-        'rest_framework.authentication.BasicAuthentication',
+        
     ],
 
     'SWAGGER_UI_SETTINGS': {
