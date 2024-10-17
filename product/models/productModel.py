@@ -4,7 +4,7 @@ from django.db import models
 
 class Product(models.Model):
     # атрибут "Name" - название товара.
-    name = models.CharField("Name", db_column="Name")
+    name = models.CharField("Name", db_column="Name", max_length=100)
 
     # атрибут "Description" - описание товара.
     description = models.TextField("Description", db_column="Description")

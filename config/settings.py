@@ -1,18 +1,17 @@
 from datetime import timedelta
-
+from pathlib import Path
 import environ
 
 root = environ.Path(__file__) - 2
 env = environ.Env()
 environ.Env.read_env(env.str(root(), '.env'))
 
-BASE_DIR = root()
+BASE_DIR = Path(root())
 
 
 SECRET_KEY = env.str('SECRET_KEY')
 DEBUG = env.bool('DEBUG', default=False)
 ALLOWED_HOSTS = env.str('ALLOWED_HOSTS', default='').split(' ')
-SECRET_KEY = 'django-insecure-8_zdn3j+hppx&zka^t(mr*(da5du-)s7s+v4#3=r32%3&jf4lx'
 
 
 DEBUG = True
@@ -88,12 +87,8 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': env.str('PG_DATABASE', 'postgres'),
-        'USER': env.str('PG_USER', 'postgres'),
-        'PASSWORD': env.str('PG_PASSWORD', 'postgres'),
-        'HOST': env.str('DB_HOST', 'localhost'),
-        'PORT': env.str('DB_PORT', 5432),
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',  
     }
 }
 
