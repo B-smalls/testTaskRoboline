@@ -64,6 +64,7 @@ pip install -r requirements.txt
 ### 5. Применение миграций
 Выполните миграции для инициализации базы данных:
 ```bash
+python manage.py makemigrations
 python manage.py migrate
 
 ```
